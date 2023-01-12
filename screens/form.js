@@ -1,7 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { Button } from "react-native-elements";
 
-const formScreen = () => {
+const FormScreen = () => {
+  const Navigation = useNavigation();
   return (
     <View>
       <Text
@@ -13,7 +16,13 @@ const formScreen = () => {
       >
         formScreen
       </Text>
+      <Button
+        title={"Nuevo Presupuesto"}
+        onPress={() => {
+          Navigation.navigate("Home");
+        }}
+      />
     </View>
   );
 };
-export default formScreen;
+export default FormScreen;
