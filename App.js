@@ -1,12 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import Navigation from "./Navigation";
-import Main from "./src/components/main";
+import Main from "./src/navigation/main";
+import MyTabs from "./src/navigation/TabNavigator";
 export default function App() {
-  return (
-    <Main />
-    /* <Navigation /> */
-  );
+  return <Main />;
 }
 
 const styles = StyleSheet.create({
