@@ -3,8 +3,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 
 //Screens
-import PrecioScreen from "../../screens/precios";
-import FormScreen from "../../screens/form";
+import PrecioScreen from "../screens/precios";
+import FormScreen from "../screens/form";
 import HomeStackScreen from "../stacks/HomeStackScreen";
 //Icons
 import { Ionicons } from "@expo/vector-icons";

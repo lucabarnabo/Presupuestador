@@ -1,9 +1,13 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import Main from "./src/navigation/main";
 import MyTabs from "./src/navigation/TabNavigator";
 export default function App() {
-  return <Main />;
+  return (
+    <SafeAreaView>
+      <Main />;
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
