@@ -13,6 +13,7 @@ import { FontAwesome } from "@expo/vector-icons";
 
 function MyTabs() {
   const Tab = createBottomTabNavigator();
+
   return (
     <Tab.Navigator
       initialRouteName="Home"
