@@ -11,7 +11,7 @@ import { useNavigation } from "@react-navigation/native";
 import Logo from "../../assets/images/LogoFarewell.png";
 
 import CustomInput from "../components/CustomInput";
-import Custombutton from "../components/Custombutton";
+import CustomButton from "../components/Custombutton";
 
 const LoginScreen = () => {
   const [username, setUsername] = useState("");
@@ -20,6 +20,9 @@ const LoginScreen = () => {
 
   const { height } = useWindowDimensions();
 
+  const onSignInPress = () => {
+    console.warn("sing in");
+  };
   return (
     <View style={Styles.root}>
       <Image source={Logo} style={Styles.logo} />
@@ -34,6 +37,12 @@ const LoginScreen = () => {
         setValue={setPassword}
         secureTextEntry={true}
       />
+      <CustomButton text={"Iniciar Sesión"} onPress={onSignInPress()} />
+      <CustomButton
+        text={"Olvidaaate"}
+        onPress={onSignInPress()}
+        type="SECONDARY"
+      />
     </View>
   );
 };
@@ -44,9 +53,9 @@ const Styles = StyleSheet.create({
     padding: 20,
   },
   logo: {
-    width: "70%",
-    maxWidth: 100,
-    maxHeight: 100,
+    width: "100%",
+    maxWidth: 200,
+    maxHeight: 200,
   },
 });
 export default LoginScreen;
