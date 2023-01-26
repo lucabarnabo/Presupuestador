@@ -1,26 +1,16 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { StatusBar } from "expo-status-bar";
-import Navigation from "./Navigation";
-export default function App() {
+import Main from "./src/navigation/main";
+import { SafeAreaView } from "react-native-safe-area-context";
+import MyTabs from "./src/navigation/TabNavigator";
+import { AuthProvider } from "./src/context/AuthContext";
+
+const App = () => {
   return (
-    /*  <View style={styles.container}>
-      <Text style={styles.titulo}>Login</Text>
-      <StatusBar style="auto" />
-    </View> */
-
-    <Navigation />
+    <AuthProvider>
+      <Main />
+    </AuthProvider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  titulo: {
-    fontSize: 30,
-  },
-});
+export default App;
