@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import Constants from "expo-constants";
 import TabNavigator from "./TabNavigator";
@@ -7,9 +7,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Main = () => {
-  const isLoggedIn = false;
-
-  return (
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  /*   const isLoggedIn = true;
+   */ return (
     <NavigationContainer style={Styles.root}>
       {isLoggedIn ? <TabNavigator /> : <AuthNavigator />}
     </NavigationContainer>
