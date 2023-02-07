@@ -16,12 +16,14 @@ import { AuthContext } from "../context/AuthContext";
 const LoginScreen = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useContext(AuthContext);
+
   const Navigation = useNavigation();
   const value = useContext(AuthContext);
 
   const { height } = useWindowDimensions();
 
-  const onSignInPress = () => {
+  const onSignInPress = (username, passworc) => {
     console.log("Sign in");
     () => Navigation.navigate("Home");
   };
@@ -39,7 +41,12 @@ const LoginScreen = () => {
         setValue={setPassword}
         secureTextEntry={true}
       />
-      <CustomButton text={"Iniciar Sesión"} onPress={onSignInPress()} />
+      <CustomButton
+        text={"Iniciar Sesión"}
+        onPress={() => {
+          login(username, password);
+        }}
+      />
       <CustomButton
         text={"Registrate"}
         onPress={() => Navigation.navigate("SignUp")}

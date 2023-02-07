@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   View,
   StyleSheet,
@@ -11,6 +11,9 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import Logo from "../../assets/images/LogoFarewell.png";
 
+import { AuthContext } from "../context/AuthContext";
+
+//Custom components
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/Custombutton";
 
@@ -20,7 +23,7 @@ const SignUpScreen = () => {
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
   const Navigation = useNavigation();
-
+  const { register } = useContext(AuthContext);
   const { height } = useWindowDimensions();
 
   const createAccount = () => {
@@ -34,6 +37,7 @@ const SignUpScreen = () => {
         value={username}
         setValue={setUsername}
       />
+      <CustomInput placeholder="E-mail" value={email} setValue={setEmail} />
       <CustomInput placeholder="Email" value={email} setValue={setEmail} />
       <CustomInput
         placeholder="Contraseña"
@@ -50,7 +54,9 @@ const SignUpScreen = () => {
 
       <CustomButton
         text={"Crear Cuenta"}
-        onPress={createAccount()}
+        onPress={() => {
+          register(username, password, email);
+        }}
         type="SECONDARY"
       />
     </View>
