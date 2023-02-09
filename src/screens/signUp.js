@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Logo from "../../assets/images/LogoFarewell.png";
-
+import Spinner from "react-native-loading-spinner-overlay";
 import { AuthContext } from "../context/AuthContext";
 
 //Custom components
@@ -18,19 +18,22 @@ import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/Custombutton";
 
 const SignUpScreen = () => {
+  const Navigation = useNavigation();
+  const { height } = useWindowDimensions();
+  //State hooks
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
-  const Navigation = useNavigation();
-  const { register } = useContext(AuthContext);
-  const { height } = useWindowDimensions();
+  //Context Hooks
+  const { isLoading, register } = useContext(AuthContext);
 
   const createAccount = () => {
     console.warn("sing in");
   };
   return (
     <View style={Styles.root}>
+      <Spinner visible={isLoading} />
       <Text style={Styles.title}>Registro</Text>
       <CustomInput
         placeholder="Usuario"

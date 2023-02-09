@@ -8,18 +8,20 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Logo from "../../assets/images/LogoFarewell.png";
+import Spinner from "react-native-loading-spinner-overlay";
 
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/Custombutton";
+
 import { AuthContext } from "../context/AuthContext";
 
 const LoginScreen = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useContext(AuthContext);
+
+  const { isLoading, login } = useContext(AuthContext);
 
   const Navigation = useNavigation();
-  const value = useContext(AuthContext);
 
   const { height } = useWindowDimensions();
 
@@ -29,6 +31,7 @@ const LoginScreen = () => {
   };
   return (
     <View style={Styles.root}>
+      <Spinner visible={isLoading} />
       <Image source={Logo} style={Styles.logo} />
       <CustomInput
         placeholder="Usuario"
