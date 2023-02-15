@@ -1,39 +1,49 @@
-import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { Button, ButtonGroup, withTheme } from "@rneui/themed";
-import { useNavigation } from "@react-navigation/native";
+import React, { useContext, useEffect } from "react";
+import { View, StyleSheet } from "react-native";
+import StepHeader from "./components/stepbar/StepHeader";
+import StepContent from "./components/stepbar/StepContent";
+import StepFooter from "./components/stepbar/StepFooter";
+import StepsContext from "./context/stepsContext";
+import Shipping from "./Shipping";
+import Payments from "./Payments";
+import Confirmation from "./Confirmation";
 
-const HomeScreen = () => {
-  const Navigation = useNavigation();
+const Steps = () => {
+  const stepsContext = useContext(StepsContext);
+  const { setSteps, setCurrentStep } = stepsContext;
+  useEffect(() => {
+    setSteps([
+      {
+        title: "Shipping",
+        component: () => <Shipping />,
+      },
+      {
+        title: "Payments",
+        component: () => <Payments />,
+      },
+      {
+        title: "Confirmation",
+        component: () => <Confirmation />,
+      },
+    ]);
+    setCurrentStep(1);
+  }, []);
+
   return (
-    <View>
-      <Text
-        style={{
-          fontSize: 20,
-          textAlign: "center",
-          color: "blue",
-        }}
-      >
-        homeScreen
-      </Text>
-      <Button
-        title="Log in"
-        loading={false}
-        loadingProps={{ size: "small", color: "white" }}
-        buttonStyle={{
-          backgroundColor: "rgba(111, 202, 186, 1)",
-          borderRadius: 16,
-        }}
-        titleStyle={{ fontWeight: "bold", fontSize: 23 }}
-        containerStyle={{
-          marginHorizontal: 50,
-          height: 50,
-          width: 200,
-          marginVertical: 10,
-        }}
-        onPress={() => Navigation.navigate("Home2")}
-      />
+    <View style={styles.container}>
+      <StepHeader />
+      <StepContent />
+      <StepFooter />
     </View>
   );
 };
-export default HomeScreen;
+
+export default Steps;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "space-between",
+  },
+});

@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
+
 import { AuthProvider } from "./src/context/AuthContext";
 import AuthNavigator from "./src/navigation/AuthNavigator";
 
