@@ -1,24 +1,20 @@
-import axios from "axios";
 import React, { createContext, useState } from "react";
-import { BASE_URL } from "../config";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export const StepContext = createContext();
+export const StepsContext = createContext();
 
-export const StepProvider = ({ children }) => {
+export const StepsProvider = ({ children }) => {
   const [steps, setSteps] = useState([]);
-  const [currentStep, setCurrentStep] = useState();
-
-  const register = () => {};
-
+  const [currentStep, setCurrentStep] = useState(0);
   return (
-    <StepContext.Provider
+    <StepsContext.Provider
       value={{
+        steps,
         setSteps,
+        currentStep,
         setCurrentStep,
       }}
     >
       {children}
-    </StepContext.Provider>
+    </StepsContext.Provider>
   );
 };

@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
-import StepHeader from "./components/stepbar/StepHeader";
-import StepContent from "./components/stepbar/StepContent";
-import StepFooter from "./components/stepBar/StepFooter";
-import StepsContext from "./context/StepsContext";
-import Shipping from "./Shipping";
+import StepHeader from "../components/stepBar/StepHeader";
+/* import StepContent from "../components/stepbar/StepContent";
+import StepFooter from "../components/stepbar/StepFooter"; */
+import { StepsContext } from "../context/StepsContext";
+/* import Shipping from "./Shipping"; 
 import Payments from "./Payments";
-import Confirmation from "./Confirmation";
+import Confirmation from "./Confirmation";  */
 
 const Steps = () => {
   const stepsContext = useContext(StepsContext);
@@ -15,15 +15,15 @@ const Steps = () => {
     setSteps([
       {
         title: "Shipping",
-        component: () => <Shipping />,
+        /*   component: () => <Shipping />, */
       },
       {
         title: "Payments",
-        component: () => <Payments />,
+        /*   component: () => <Payments />, */
       },
       {
         title: "Confirmation",
-        component: () => <Confirmation />,
+        /*   component: () => <Confirmation />, */
       },
     ]);
     setCurrentStep(1);
@@ -32,8 +32,8 @@ const Steps = () => {
   return (
     <View style={styles.container}>
       <StepHeader />
-      <StepContent />
-      <StepFooter />
+      {/* <StepContent />
+      <StepFooter /> */}
     </View>
   );
 };
